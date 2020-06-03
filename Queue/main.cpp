@@ -1,31 +1,29 @@
 #include <iostream>
 #include "queue.hpp"
-
 using namespace std;
-
 
 int main(){
     queue q;
 
-    cout << "Fill queue til last place with numbers from 0 to " << MAX-1 << endl;
+    cout << "Fill queue til last place with numbers from 0 to " << MAX-1;
     for(int i=0; i<MAX; i++) q.put(i);
 
-    cout <<  "Is queue full? " << q.isFull() << endl;
+    cout << "\nIs queue full? " << q.isFull();
     // q.put(100); // put on full queue will raise error
 
-    cout << "Get and print first five elements from queue: ";
+    cout << "\nGet and print first five elements from queue: ";
     for(int i=0; i<5; i++) cout << q.get() << " ";
 
-    cout << endl << "Add five elements from " << MAX << " to " << MAX+4 << " on newly vacated places." << endl;
+    cout << "\nAdd five elements from " << MAX << " to " << MAX+4 << " on newly vacated places.";
     for(int i=MAX; i<MAX+5; i++) q.put(i);
 
-    cout << "Then get all elements except last ten." << endl;
+    cout << "\nThen get all elements except last ten.";
     for(int i=0; i<MAX-10; i++) q.get();
 
-    cout << "Finally get and print last ten elements: ";
+    cout << "\nFinally get and print last ten elements: ";
     while(!q.isEmpty()) cout << q.get() << " ";
 
-    cout << endl << "Is queue empty? " << q.isEmpty() << endl;
+    cout << "\nIs queue empty? " << q.isEmpty();
     // q.get(); // get on empty queue will raise error
 
     return 0;
