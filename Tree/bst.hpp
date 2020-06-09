@@ -15,6 +15,24 @@ void insert(node*& root, int number){
     else insert(root->right, number);
 }
 
+node* deleteNode(node* root, int number){
+    if(!root) return nullptr;
+
+    if(number < root->value)
+        root->left = deleteNode(root->left, number);
+    else if(number > root->value)
+        root->right = deleteNode(root->right, number);
+    else{
+        if(!root->left) return root->right;
+        else if (!root->right) return root->left;
+
+        int value = minimum(root->right)->value;
+        root->value = value;
+        root->right = deleteNode(root->right, value);
+    }
+    return root;
+}
+
 bool isBST(node* root, node* left=nullptr, node* right=nullptr){
     if (!root) return true;
     if (left && left->value > root->value) return false;
