@@ -15,6 +15,12 @@ void insert(node*& root, int number){
     else insert(root->right, number);
 }
 
+node* search(node* root, int number){
+    if(!root || root->value == number) return root;
+    if(root->value > number) return search(root->left, number);
+    return search(root->right, number);
+}
+
 node* deleteNode(node* root, int number){
     if(!root) return nullptr;
 

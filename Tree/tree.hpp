@@ -24,6 +24,12 @@ int nodesOnLevel(node* root, int level){
     return nodesOnLevel(root->left, level-1) + nodesOnLevel(root->right, level-1);
 }
 
+bool isInTree(node* root, int number){
+    if(!root) return false;
+    if(root->value == number) return true;
+    return isInTree(root->left, number) || isInTree(root->right, number);
+}
+
 void deleteTree(node* root){
     if(!root) return;
     deleteTree(root->left);
