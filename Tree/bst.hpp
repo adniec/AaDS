@@ -6,6 +6,16 @@ struct node{
     node* right = nullptr;
 };
 
+node* minimum(node* root){
+    if(root && root->left) return minimum(root->left);
+    return root;
+}
+
+node* maximum(node* root){
+    if(root && root->right) return maximum(root->right);
+    return root;
+}
+
 void insert(node*& root, int number){
     if(!root){
         root = new node{number};
