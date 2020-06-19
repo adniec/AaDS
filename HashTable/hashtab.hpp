@@ -24,3 +24,13 @@ node* search(node* hashtab[SIZE], std::string key){
     }
     return nullptr;
 }
+
+void insert(node* hashtab[SIZE], std::string key, int value){
+    node* found = search(hashtab, key);
+    if(found)
+        found->value = value;
+    else{
+        int index = strToNum(key) % SIZE;
+        hashtab[index] = new node{key, value, hashtab[index]};
+    }
+}
