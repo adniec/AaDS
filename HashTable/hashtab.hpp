@@ -34,3 +34,25 @@ void insert(node* hashtab[SIZE], std::string key, int value){
         hashtab[index] = new node{key, value, hashtab[index]};
     }
 }
+
+void removeKey(node* hashtab[SIZE], std::string key){
+    int index = strToNum(key) % SIZE;
+    if(hashtab[index]){
+        node* n = hashtab[index]->next;
+        if(hashtab[index]->key == key){
+            delete hashtab[index];
+            hashtab[index] = n;
+            return;
+        }
+        node* prev = hashtab[index];
+        while(n){
+            if(n->key == key){
+                prev->next = n->next;
+                delete n;
+                return;
+            }
+            prev = n;
+            n = n->next;
+        }
+    }
+}
