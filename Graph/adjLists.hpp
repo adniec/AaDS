@@ -24,3 +24,16 @@ int* breadthFirstSearch(node* graph[V], int source){
     }
     return parents;
 }
+
+void depthFirstSearch(node* graph[V], int vertex){
+    visited[vertex] = true;
+    node* neighbour = graph[vertex];
+
+    while(neighbour){
+        int value = neighbour->value;
+        if(!visited[value]){
+            depthFirstSearch(graph, value);
+        }
+        neighbour = neighbour->next;
+    }
+}
