@@ -25,3 +25,13 @@ void depthFirstSearch(int graph[V][V], int source){
         if(graph[source][i] && !visited[i])
             depthFirstSearch(graph, i);
 }
+
+int degree(int graph[V][V]){
+    int degree = 0;
+    for(int i=0; i<V; i++){
+        int neightbours = 0;
+        for(int j=0; j<V; j++) if(graph[i][j]) neightbours++;
+        if(neightbours > degree) degree = neightbours;
+    }
+    return degree;
+}
