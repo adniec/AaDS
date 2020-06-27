@@ -37,3 +37,12 @@ void depthFirstSearch(node* graph[V], int vertex){
         neighbour = neighbour->next;
     }
 }
+
+int degree(node* graph[V]){
+    int degree = 0;
+    for(int i=0; i<V; i++){
+        int neightbours = length(graph[i]);
+        if(neightbours > degree) degree = neightbours;
+    }
+    return degree;
+}
