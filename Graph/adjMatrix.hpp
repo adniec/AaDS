@@ -35,3 +35,19 @@ int degree(int graph[V][V]){
     }
     return degree;
 }
+
+bool isDirected(int graph[V][V]){
+    int occurrences[V];
+    for(int i=0; i<V; i++) occurrences[i] = 0;
+
+    for(int i=0; i<V; i++)
+        for(int j=0; j<V; j++)
+            if(graph[i][j]){
+                occurrences[i]++;
+                occurrences[j]++;
+            }
+
+    for(int i=0; i<V; i++)
+        if(occurrences[i] % 2 != 0) return true;
+    return false;
+}
