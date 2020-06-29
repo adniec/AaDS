@@ -46,3 +46,21 @@ int degree(node* graph[V]){
     }
     return degree;
 }
+
+bool isDirected(node* graph[V]){
+    int occurrences[V];
+    for(int i=0; i<V; i++) occurrences[i] = 0;
+
+    for(int i=0; i<V; i++){
+        node* neighbour = graph[i];
+        while(neighbour){
+            occurrences[i]++;
+            occurrences[neighbour->value]++;
+            neighbour = neighbour->next;
+        }
+    }
+
+    for(int i=0; i<V; i++)
+        if(occurrences[i] % 2 != 0) return true;
+    return false;
+}
