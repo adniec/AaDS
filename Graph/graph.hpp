@@ -37,6 +37,18 @@ node** getNeighbours(){
     return graph;
 }
 
+int components(int graph[V][V]){
+    for(int i=0; i<V; i++) visited[i] = false;
+    int counter = 0;
+    for(int i=0; i<V; i++){
+        if(!visited[i]){
+            depthFirstSearch(graph, i);
+            counter++;
+        }
+    }
+    return counter;
+}
+
 void shortestPath(int parents[], int source, int destination){
     node* values = new node{destination};
 
