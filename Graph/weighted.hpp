@@ -41,6 +41,40 @@ int* dijkstra(int graph[V][V], int source){
 	return parents;
 }
 
+int* prim(int graph[V][V]){
+    int* parents = new int[V];
+    int values[V];
+    bool found[V];
+    
+    for(int i=0; i<V; i++){
+        values[i] = MAXIMUM;
+        found[i] = false;
+    }
+    values[0] = 0;
+    parents[0] = -1;
+    
+    for(int _=0; _<V-1; _++){
+        int min = MAXIMUM;
+        int u;
+
+        for (int i=0; i<V; i++)
+            if(found[i] == false && values[i] < min){
+                min = values[i];
+                u = i;
+            }
+        found[u] = true;
+
+        for(int i=0; i<V; i++){
+            int value = graph[u][i];
+            if(!found[i] && value && value < values[i]){
+                parents[i] = u;
+                values[i] = value;
+            }
+        }
+    }
+    return parents;
+}
+
 void travelWhenDescending(int graph[V][V], int source, int last_weight){
 	visited[source] = true;
 	for(int i=0; i<V; i++){
