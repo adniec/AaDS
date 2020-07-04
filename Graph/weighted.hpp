@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include "graph.hpp"
+#include "adjMatrix.hpp"
 using namespace std;
 
 int* dijkstra(int graph[V][V], int source){
@@ -73,6 +74,31 @@ int* prim(int graph[V][V]){
         }
     }
     return parents;
+}
+
+int fordFulkerson(int graph[V][V], int source, int destination){
+    int tmpGraph[V][V];
+    for(int i=0; i<V; i++)
+        for(int j=0; j<V; j++)
+            tmpGraph[i][j] = graph[i][j];
+
+    int* parents = breadthFirstSearch(tmpGraph, source);
+    int capacity = 0;
+
+    while(parents[destination]!=-1){
+        int path = MAXIMUM;
+        for(int i=destination; i!=source; i=parents[i])
+            path = min(path, tmpGraph[parents[i]][i]);
+
+        for(int i=destination; i!=source; i=parents[i]){
+            tmpGraph[parents[i]][i] -= path;
+            tmpGraph[i][parents[i]] += path;
+        }
+        capacity += path;
+        delete parents;
+        parents = breadthFirstSearch(tmpGraph, source);
+    }
+    return capacity;
 }
 
 void travelWhenDescending(int graph[V][V], int source, int last_weight){
