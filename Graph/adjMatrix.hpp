@@ -24,6 +24,7 @@ void depthFirstSearch(int graph[V][V], int source){
     for(int i=0; i<V; i++)
         if(graph[source][i] && !visited[i])
             depthFirstSearch(graph, i);
+    visit.push(source);
 }
 
 int degree(int graph[V][V]){
@@ -50,4 +51,15 @@ bool isDirected(int graph[V][V]){
     for(int i=0; i<V; i++)
         if(occurrences[i] % 2 != 0) return true;
     return false;
+}
+
+void topologicalSort(int graph[V][V]){
+    for(int i=0; i<V; i++) visited[i] = false;
+    while(!visit.isEmpty()) visit.pop();
+
+    for(int i=0; i<V; i++)
+        if(!visited[i])
+            depthFirstSearch(graph, i);
+
+    while(!visit.isEmpty()) cout << visit.pop() << " ";
 }

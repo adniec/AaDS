@@ -1,11 +1,13 @@
 #pragma once
 #include <iostream>
 #include "../List/list.hpp"
+#include "../Stack/Stack.hpp"
 using namespace std;
 
 const int V = 7;
 const int MAXIMUM = 2147483647;
 bool visited[V] = {};
+stack visit;
 
 int GRAPH[V][V] = {
     {0,0,0,0,1,1,0},
