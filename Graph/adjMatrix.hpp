@@ -37,6 +37,18 @@ int degree(int graph[V][V]){
     return degree;
 }
 
+int components(int graph[V][V]){
+    for(int i=0; i<V; i++) visited[i] = false;
+    int counter = 0;
+    for(int i=0; i<V; i++){
+        if(!visited[i]){
+            depthFirstSearch(graph, i);
+            counter++;
+        }
+    }
+    return counter;
+}
+
 bool isDirected(int graph[V][V]){
     int occurrences[V];
     for(int i=0; i<V; i++) occurrences[i] = 0;

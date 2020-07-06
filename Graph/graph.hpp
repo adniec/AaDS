@@ -4,51 +4,41 @@
 #include "../Stack/Stack.hpp"
 using namespace std;
 
-const int V = 7;
-const int MAXIMUM = 2147483647;
+#define V 7
+#define MAXIMUM 2147483647
 bool visited[V] = {};
 stack visit;
 
-int GRAPH[V][V] = {
+int matrix[V][V] = {
     {0,0,0,0,1,1,0},
     {0,0,1,1,1,1,0},
     {0,1,0,1,0,1,1},
     {0,1,1,0,1,0,1},
     {1,1,0,1,0,1,0},
     {1,1,1,0,1,0,0},
-    {0,0,1,1,0,0,0}
+    {0,0,1,1,0,0,0},
 };
 
-int WEIGHTED[V][V] = {
-    {0,0,0,0,6,3,0},
-    {0,0,4,1,1,2,0},
-    {0,4,0,3,0,5,6},
-    {0,1,3,0,9,0,1},
-    {6,1,0,9,0,2,0},
-    {3,2,5,0,2,0,0},
-    {0,0,6,1,0,0,0}
+int weighted[V][V] = {
+    {0,9,2,0,0,9,0},
+    {0,0,0,9,0,0,0},
+    {0,5,0,9,3,0,0},
+    {0,0,0,0,0,0,0},
+    {0,0,0,0,0,2,4},
+    {0,0,0,0,0,0,1},
+    {0,0,0,2,0,0,0},
 };
 
-node** getNeighbours(){
+node** getAdjLists(){
     node** graph = new node*[V];
-    for(int i=0; i<V; i++) graph[i] = nullptr;
+    for(int i=0; i<V; i++)
+        graph[i] = nullptr;
+
     for(int i=0; i<V; i++)
         for(int j=0; j<V; j++)
-            if(GRAPH[i][j])
+            if(matrix[i][j])
                 pushBack(graph[i], j);
     return graph;
-}
-
-int components(int graph[V][V]){
-    for(int i=0; i<V; i++) visited[i] = false;
-    int counter = 0;
-    for(int i=0; i<V; i++){
-        if(!visited[i]){
-            depthFirstSearch(graph, i);
-            counter++;
-        }
-    }
-    return counter;
 }
 
 void shortestPath(int parents[], int source, int destination){

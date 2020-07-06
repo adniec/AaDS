@@ -48,6 +48,18 @@ int degree(node* graph[V]){
     return degree;
 }
 
+int components(node* graph[V]){
+    for(int i=0; i<V; i++) visited[i] = false;
+    int counter = 0;
+    for(int i=0; i<V; i++){
+        if(!visited[i]){
+            depthFirstSearch(graph, i);
+            counter++;
+        }
+    }
+    return counter;
+}
+
 bool isDirected(node* graph[V]){
     int occurrences[V];
     for(int i=0; i<V; i++) occurrences[i] = 0;
