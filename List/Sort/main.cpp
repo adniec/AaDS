@@ -6,7 +6,7 @@
 #include <iostream>
 using namespace std;
 
-const int N = 10;
+#define N 10
 
 int main(){
     cout << "BubbleSort:";

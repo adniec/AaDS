@@ -1,6 +1,6 @@
 #pragma once
 
-const int MAX = 100;
+#define MAX 100
 
 struct stack{
     int arr[MAX];

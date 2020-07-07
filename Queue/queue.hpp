@@ -1,6 +1,6 @@
 #pragma once
 
-const int MAX = 100;
+#define MAX 100
 
 struct queue{
     int arr[MAX];

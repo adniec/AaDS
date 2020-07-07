@@ -45,7 +45,7 @@ void remove(node*& head, int number){
         node* n = head->next;
         if(head->value == number){
             delete head;
-            head=n;
+            head = n;
             return;
         }
         node* prev = head;

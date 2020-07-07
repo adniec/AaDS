@@ -31,9 +31,8 @@ void depthFirstSearch(node* graph[V], int vertex){
 
     while(neighbour){
         int value = neighbour->value;
-        if(!visited[value]){
+        if(!visited[value])
             depthFirstSearch(graph, value);
-        }
         neighbour = neighbour->next;
     }
     visit.push(vertex);

@@ -4,7 +4,7 @@ void quickSort(int array[], int start, int end){
     int first = start;
     int last = end;
     int pivot = array[(first+last)/2];
-    
+
     while(first <= last){
         while(array[first] < pivot) first++;
         while(array[last] > pivot) last--;

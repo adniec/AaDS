@@ -14,7 +14,7 @@ void print(node* hashtab[SIZE], int index){
 }
 
 int main(){
-    node* hashtab[SIZE] = {nullptr};
+    node* hashtab[SIZE] = {};
 
     const int N = 6;
     string words[N] = {"new", "expected", "example", "delete", "process", "accomplishment"};

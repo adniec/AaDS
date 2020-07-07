@@ -42,16 +42,18 @@ node** getAdjLists(){
 }
 
 void shortestPath(int parents[], int source, int destination){
-    node* values = new node{destination};
+    stack s;
+    s.push(destination);
 
     cout << "Shortest path from " << source << " to " << destination << ": ";
     while(parents[source] != destination){
         if(parents[destination] < 0){
-            cout << "does not exist." << endl;
+            cout << "does not exist.\n";
             return;
         }
-        pushFront(values, parents[destination]);
+        s.push(parents[destination]);
         destination = parents[destination];
     }
-    print(values);
+    while(!s.isEmpty()) cout << s.pop() << " ";
+    cout << endl;
 }

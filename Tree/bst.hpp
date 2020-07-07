@@ -50,8 +50,8 @@ node* deleteNode(node* root, int number){
 }
 
 bool isBST(node* root, node* left=nullptr, node* right=nullptr){
-    if (!root) return true;
-    if (left && left->value > root->value) return false;
-    if (right && right->value < root->value) return false;
+    if(!root) return true;
+    if(left && left->value > root->value) return false;
+    if(right && right->value < root->value) return false;
     return isBST(root->left, left, root) && isBST(root->right, root, right);
 }

@@ -3,8 +3,8 @@
 #include "Sort/quick.hpp"
 using namespace std;
 
-const int N = 10;
-int ARRAY[N];
+#define N 10
+int numbers[N];
 
 void rotate(int array[], int length, int positions){
     if(length > 1)
@@ -23,8 +23,8 @@ int* get(bool sorted=false){
     srand((unsigned)time(nullptr));
 
     for (int i=0; i<N; i++)
-        ARRAY[i] = rand() / 10000000;
+        numbers[i] = rand() / 10000000;
     if(sorted)
-        quickSort(ARRAY, 0, N-1);
-    return ARRAY;
+        quickSort(numbers, 0, N-1);
+    return numbers;
 }

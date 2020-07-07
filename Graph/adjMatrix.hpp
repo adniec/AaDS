@@ -19,12 +19,12 @@ int* breadthFirstSearch(int graph[V][V], int source){
     return parents;
 }
 
-void depthFirstSearch(int graph[V][V], int source){
-    visited[source] = true;
+void depthFirstSearch(int graph[V][V], int vertex){
+    visited[vertex] = true;
     for(int i=0; i<V; i++)
-        if(graph[source][i] && !visited[i])
+        if(graph[vertex][i] && !visited[i])
             depthFirstSearch(graph, i);
-    visit.push(source);
+    visit.push(vertex);
 }
 
 int degree(int graph[V][V]){

@@ -1,7 +1,7 @@
 #pragma once
 
 void insertionSort(int array[], int length){
-    for(int i=1; i < length; i++){
+    for(int i=1; i<length; i++){
         int value = array[i];
         int position = i;
         
