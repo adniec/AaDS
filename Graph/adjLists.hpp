@@ -77,6 +77,32 @@ bool isDirected(node* graph[V]){
     return false;
 }
 
+bool detectedCycle(node* graph[V], int vertex, int parent){
+    visited[vertex] = true;
+    node* neighbour = graph[vertex];
+
+    while(neighbour){
+        int value = neighbour->value;
+        if(visited[value]){
+            if(value != parent)
+                return true;
+        }else
+            if(detectedCycle(graph, value, vertex))
+                return true;
+        neighbour = neighbour->next;
+    }
+    return false;
+}
+
+bool hasUndirectedCycle(node* graph[V]){
+    for(int i=0; i<V; i++) visited[i] = false;
+    for(int i=0; i<V; i++)
+        if(!visited[i])
+            if(detectedCycle(graph, i, -1))
+                return true;
+    return false;
+}
+
 void topologicalSort(node* graph[V]){
     for(int i=0; i<V; i++) visited[i] = false;
     while(!visit.isEmpty()) visit.pop();
