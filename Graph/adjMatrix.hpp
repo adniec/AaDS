@@ -65,6 +65,30 @@ bool isDirected(int graph[V][V]){
     return false;
 }
 
+bool detectedCycle(int graph[V][V], int vertex, int parent){
+    visited[vertex] = true;
+
+    for(int i=0; i<V; i++){
+        if(graph[vertex][i])
+            if(visited[i]){
+                if(i != parent)
+                    return true;
+            }else
+                if(detectedCycle(graph, i, vertex))
+                    return true;
+    } 
+    return false; 
+}
+
+bool hasUndirectedCycle(int graph[V][V]){
+    for(int i=0; i<V; i++) visited[i] = false;
+    for(int i=0; i<V; i++)
+        if(!visited[i])
+            if(detectedCycle(graph, i, -1))
+                return true;
+    return false;
+}
+
 void topologicalSort(int graph[V][V]){
     for(int i=0; i<V; i++) visited[i] = false;
     while(!visit.isEmpty()) visit.pop();
