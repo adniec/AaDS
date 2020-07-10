@@ -89,6 +89,27 @@ bool hasUndirectedCycle(int graph[V][V]){
     return false;
 }
 
+bool hasEulerianCycle(int graph[V][V]){
+    if(components(graph) != 1) return false;
+
+    int incomming[V] = {};
+    int outcomming[V] = {};
+
+    for(int i=0; i<V; i++){
+        int sum = 0;
+        for(int j=0; j<V; j++){
+            if(graph[i][j]){
+                incomming[j]++;
+                sum++;
+            }
+        }
+        outcomming[i] = sum;
+    }
+    for(int i=0; i<V; i++)
+        if(incomming[i] != outcomming[i]) return false;
+    return true;
+}
+
 void topologicalSort(int graph[V][V]){
     for(int i=0; i<V; i++) visited[i] = false;
     while(!visit.isEmpty()) visit.pop();
