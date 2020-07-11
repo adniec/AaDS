@@ -103,6 +103,27 @@ bool hasUndirectedCycle(node* graph[V]){
     return false;
 }
 
+bool hasEulerianCycle(node* graph[V]){
+    if(components(graph) != 1) return false;
+
+    int incomming[V] = {};
+    int outcomming[V] = {};
+
+    for(int i=0; i<V; i++){
+        int sum = 0;
+        node* neighbour = graph[i];
+        while(neighbour){
+            incomming[neighbour->value]++;
+            sum++;
+            neighbour = neighbour->next;
+        }
+        outcomming[i] = sum;
+    }
+    for(int i=0; i<V; i++)
+        if(incomming[i] != outcomming[i]) return false;
+    return true;
+}
+
 void topologicalSort(node* graph[V]){
     for(int i=0; i<V; i++) visited[i] = false;
     while(!visit.isEmpty()) visit.pop();
